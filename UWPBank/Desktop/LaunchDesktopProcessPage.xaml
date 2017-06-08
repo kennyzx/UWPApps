@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="UWPBank.Desktop.LaunchDesktopProcessPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBank.Desktop"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="82,86,-22,-26">
+            <TextBlock FontSize="20" Text="Launch Desktop Process (LaunchFullTrustProcessForAppAsync)"/>
+            <TextBlock Margin="20">
+                1. Add a Desktop executable to the project and set its Build Action as Content
+                <LineBreak />
+                2. Edit the appxmanifest, reference: https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.fulltrustprocesslauncher
+                <LineBreak />
+                The launch with Full​Trust​Process​Launcher.LaunchFullTrustProcessForAppAsync
+            </TextBlock>
+            <Button Content="Launch" Click="BtnLaunchDesktopProcess_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="30">
+            <Button Content="LaunchDesktopProcessPage" Click="Button1_Click" />
 
+        </StackPanel>
     </Grid>
 </Page>

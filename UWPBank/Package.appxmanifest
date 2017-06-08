@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+         xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+         IgnorableNamespaces="uap mp">
   <Identity Name="UWPBank.kennyzx" Publisher="CN=newki_000" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="d9787796-5ca1-4f92-8dc4-f4f396cdd88e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -20,9 +25,18 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
-    </Application>
+      <Extensions>
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="Desktop\ConsoleBeep.exe">
+          <desktop:FullTrustProcess>
+            <desktop:ParameterGroup GroupId="SyncGroup" Parameters="/Sync"/>
+            <desktop:ParameterGroup GroupId="OtherGroup" Parameters="/Other"/>
+          </desktop:FullTrustProcess>
+        </desktop:Extension>
+      </Extensions>
+    </Application> 
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust"/>
   </Capabilities>
 </Package>
