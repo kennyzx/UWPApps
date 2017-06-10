@@ -31,5 +31,10 @@ namespace UWPBank
         {
             this.Frame.Navigate(typeof(Desktop.LaunchDesktopProcessPage));
         }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            throw new Exception("This is an unhandled exception and will be reported to HockeyApp");
+        }
     }
 }

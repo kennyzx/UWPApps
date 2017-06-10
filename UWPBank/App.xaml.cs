@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.HockeyApp;
 
 namespace UWPBank
 {
@@ -29,6 +30,7 @@ namespace UWPBank
         public App()
         {
             this.InitializeComponent();
+            Microsoft.HockeyApp.HockeyClient.Current.Configure("f7620c038f5f40cf98bc19ca0336dd44");
             this.Suspending += OnSuspending;
         }
 

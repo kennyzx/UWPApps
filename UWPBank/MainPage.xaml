@@ -9,8 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
-            <Button Content="LaunchDesktopProcessPage" Click="Button1_Click" />
-
+            <Button Content="Go to LaunchDesktopProcessPage" Click="Button1_Click" />
+            <Button Content="Trigger an app crash for HockeyApp" Click="Button2_Click" />
         </StackPanel>
     </Grid>
 </Page>
