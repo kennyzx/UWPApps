@@ -32,5 +32,11 @@ namespace UWPBank.Desktop
         {
             await Full​Trust​Process​Launcher.LaunchFullTrustProcessForAppAsync("App");
         }        
+
+        private void GoHomeAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame.CanGoBack)
+                this.Frame.GoBack();
+        }
     }
 }
