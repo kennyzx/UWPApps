@@ -4,5 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWPBank"
     RequestedTheme="Light">
-
+    <Application.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="AliceBlue" />
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

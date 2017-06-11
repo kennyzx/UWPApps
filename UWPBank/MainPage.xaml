@@ -9,8 +9,26 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0, 2" />
+                </Style>
+            </StackPanel.Resources>
             <Button Content="Go to LaunchDesktopProcessPage" Click="Button1_Click" />
             <Button Content="Trigger an app crash for HockeyApp" Click="Button2_Click" />
         </StackPanel>
     </Grid>
+    <!--Think about how to reuse the command bar to navigate back to home page, just like on phone-->
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Setting" Label="Setting" />
+                <AppBarSeparator/>
+                <AppBarButton Name="contact" Icon="Contact" Label="Contact" />
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Help" Label="Help" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
