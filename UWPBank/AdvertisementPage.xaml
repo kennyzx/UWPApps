@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="UWPBank.AdvertisementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBank"
+    xmlns:msAd="using:Microsoft.Advertising.WinRT.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="30" x:Name="spAdvertisements">
+            <TextBlock FontSize="16" Text="https://docs.microsoft.com/en-us/windows/uwp/monetize/test-mode-values" />
+
+            <TextBlock FontSize="16" Text="Microsoft.Advertising.WinRT.UI.AdControl"/>
+            <msAd:AdControl ApplicationId="3f83fe91-d6be-434d-a0ae-7351c5a997f1"
+                AdUnitId="test"
+                CountryOrRegion="cn"
+                HorizontalAlignment="Left"
+                Height="250"
+                VerticalAlignment="Top"
+                Width="300" />
+
+            <TextBlock FontSize="16" Text="InterstitialAd class, request video ad."/>
+            
+        </StackPanel>        
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Home" Label="Home" Click="GoHomeAppBarButton_Click" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

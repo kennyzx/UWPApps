@@ -36,5 +36,10 @@ namespace UWPBank
         {
             throw new Exception("This is an unhandled exception and will be reported to HockeyApp");
         }
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AdvertisementPage));
+        }
     }
 }

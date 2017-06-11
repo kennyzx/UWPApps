@@ -14,11 +14,12 @@
                     <Setter Property="Margin" Value="0, 2" />
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Go to LaunchDesktopProcessPage" Click="Button1_Click" />
+            <Button Content="Launch Desktop Process" Click="Button1_Click" />
             <Button Content="Trigger an app crash for HockeyApp" Click="Button2_Click" />
+            <Button Content="Show me some advertisements" Click="Button3_Click" />
         </StackPanel>
     </Grid>
-    <!--Think about how to reuse the command bar to navigate back to home page, just like on phone-->
+    <!--Think about how to reuse the command bar to navigate back to home page-->
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Minimal">
             <CommandBar.PrimaryCommands>
