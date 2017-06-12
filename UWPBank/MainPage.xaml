@@ -25,6 +25,7 @@
             <CommandBar.PrimaryCommands>
                 <AppBarButton Icon="Setting" Label="Setting" />
                 <AppBarSeparator/>
+                <AppBarToggleButton Name="FullScreenModeToggleButton" Icon="FullScreen" Click="FullScreenModeToggleButton_Click" />
                 <AppBarButton Name="contact" Icon="Contact" Label="Contact" />
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>

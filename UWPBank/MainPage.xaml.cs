@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,6 +41,26 @@ namespace UWPBank
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AdvertisementPage));
+        }
+
+        private void FullScreenModeToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var view = ApplicationView.GetForCurrentView();
+            if (view.IsFullScreenMode)
+            {
+                view.ExitFullScreenMode();
+            }
+            else
+            {
+                if (view.TryEnterFullScreenMode())
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            }
         }
     }
 }
