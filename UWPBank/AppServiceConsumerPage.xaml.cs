@@ -28,7 +28,32 @@ namespace UWPBank
             this.InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Windows.UI.Core.CoreWindow.GetForCurrentThread().KeyDown += AppServiceConsumerPage_KeyDown;
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            Windows.UI.Core.CoreWindow.GetForCurrentThread().KeyDown -= AppServiceConsumerPage_KeyDown;
+        }
+
+        private async void AppServiceConsumerPage_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        {
+            if (args.VirtualKey == Windows.System.VirtualKey.Enter)
+            {
+                await ConnectAppService();
+            }
+        }
+
         private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await ConnectAppService();
+        }
+
+        private async System.Threading.Tasks.Task ConnectAppService()
         {
             if (inventoryService == null)
             {
@@ -52,7 +77,7 @@ namespace UWPBank
             string result = "";
             if (response.Status == AppServiceResponseStatus.Success)
             {
-                result += response.Message["Response"] as string;               
+                result += response.Message["Response"] as string;
             }
 
             tb.Text = result;

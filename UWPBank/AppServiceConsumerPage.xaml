@@ -9,10 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
-            <TextBox x:Name="tb" Width="600" Height="50" HorizontalAlignment="Left" Margin="0,2" />
+            <TextBox x:Name="tb" Width="600" HorizontalAlignment="Left" Margin="0,2" />
             <Button Content="Connect to AppService" Width="200" Height="30" Margin="0,2" Click="Button_Click" />
-        </StackPanel>
-        
+            <TextBlock Text="The appservice simply turns your input text to upper case." Margin="0, 2" />
+        </StackPanel>        
     </Grid>
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Minimal">
