@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="UWPBank.AppServiceConsumerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="30">
+            <TextBox x:Name="tb" Width="600" Height="50" HorizontalAlignment="Left" Margin="0,2" />
+            <Button Content="Connect to AppService" Width="200" Height="30" Margin="0,2" Click="Button_Click" />
+        </StackPanel>
+        
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Home" Label="Home" Click="GoHomeAppBarButton_Click" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

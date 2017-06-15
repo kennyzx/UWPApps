@@ -17,6 +17,7 @@
             <Button Content="Launch Desktop Process" Click="Button1_Click" />
             <Button Content="Trigger an app crash for HockeyApp" Click="Button2_Click" />
             <Button Content="Show me some advertisements" Click="Button3_Click" />
+            <Button Content="Consume appservice provided by another UWP app" Click="Button4_Click" />
         </StackPanel>
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->
