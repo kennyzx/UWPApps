@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,7 +31,15 @@ namespace UWPBank.Desktop
         
         private async void BtnLaunchDesktopProcess_Click(object sender, RoutedEventArgs e)
         {
-            await Full​Trust​Process​Launcher.LaunchFullTrustProcessForAppAsync("App");
+            try
+            {
+                await Full​Trust​Process​Launcher.LaunchFullTrustProcessForAppAsync("App");
+            }
+            catch (System.UnauthorizedAccessException)
+            {
+                //if the runFullTrust capability is not declared in manifest
+                await new MessageDialog("Acess Denied: runFullTrust capability is not declared in manifest").ShowAsync();
+            }
         }        
 
         private void GoHomeAppBarButton_Click(object sender, RoutedEventArgs e)

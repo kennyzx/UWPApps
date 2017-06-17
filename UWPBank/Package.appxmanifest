@@ -5,7 +5,7 @@
          xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
          IgnorableNamespaces="uap rescap mp">
-  <Identity Name="UWPBank.kennyzx" Publisher="CN=newki_000" Version="1.0.0.0" />
+  <Identity Name="UWPBank.kennyzx.d" Publisher="CN=newki_000" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="d9787796-5ca1-4f92-8dc4-f4f396cdd88e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>UWPBank</DisplayName>
@@ -25,19 +25,19 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
-      <Extensions>
+      <!--Extensions>
         <desktop:Extension Category="windows.fullTrustProcess" Executable="Desktop\ConsoleBeep.exe">
           <desktop:FullTrustProcess>
             <desktop:ParameterGroup GroupId="SyncGroup" Parameters="/Sync"/>
             <desktop:ParameterGroup GroupId="OtherGroup" Parameters="/Other"/>
           </desktop:FullTrustProcess>
         </desktop:Extension>
-      </Extensions>
+      </Extensions-->
     </Application> 
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
     <DeviceCapability Name="location" />
-    <rescap:Capability Name="runFullTrust" />
+    <!--rescap:Capability Name="runFullTrust" /-->
   </Capabilities>
 </Package>
