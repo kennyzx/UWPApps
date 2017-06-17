@@ -1,0 +1,28 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="UWPBank.MapControlPage"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <AppBarButton Icon="Home" Label="Home" Click="GoHomeAppBarButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Maps:MapControl x:Name="branchesMap" 
+                         MapServiceToken="RzruHZ9hG6EKqJcSBlc4~KfuUMGR-A3n-lu2gum65DQ~Asp6xMp_bFmDJbBa3hDlGbJ6QU-T_aE5M3KzM40-1UoRP-OKKEjfitwdIUSIbEuF"
+                         Margin="30"
+                         HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Stretch"
+                         BusinessLandmarksEnabled="True"
+                         BusinessLandmarksVisible="True"
+                         ColorScheme="Dark"
+                         ZoomLevel="16" />
+    </Grid>
+</Page>

@@ -67,5 +67,10 @@ namespace UWPBank
         {
             this.Frame.Navigate(typeof(AppServiceConsumerPage));
         }
+
+        private void Button5_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MapControlPage));
+        }
     }
 }
