@@ -1,9 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
@@ -13,41 +11,42 @@ using Windows.UI.ViewManagement;
 
 namespace UWPBank
 {
-    internal class UWPBankViewModel : ViewModelBase
+    public class UWPBankViewModel : ViewModelBase
     {
-        public UWPBankViewModel()
+        public UWPBankViewModel(INavigationService navigationService)
         {
-            _contentPage = typeof(RootVisual);
+            _navigationService = navigationService;
         }
 
-        private Type _contentPage;
-        public Type ContentPage
-        {
-            get { return _contentPage; }
-            set
-            {
-                _contentPage = value;
-                RaisePropertyChanged("ContentPage");
-            }
-        }
+        INavigationService _navigationService;
 
         public RelayCommand<String> NavigationCommand
         {
             get
             {
-                return new RelayCommand<String>((pageName) =>
+                return new RelayCommand<String>((key) =>
                 {
                     try
                     {
-                        Type nextPage = Type.GetType(pageName);
-                        if (nextPage != null)
-                            ContentPage = nextPage;
+                        _navigationService.NavigateTo(key);                        
                     }
                     catch { }
                 });
-                //, (typeName) => {
-                //    return true;
-                //});
+            }
+        }
+
+        public RelayCommand NavigationToHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        _navigationService.NavigateTo(NavigationService.RootPageKey);
+                    }
+                    catch { }
+                });
             }
         }
 
@@ -133,10 +132,11 @@ namespace UWPBank
         {
             if (_inventoryService == null)
             {
-                _inventoryService = new AppServiceConnection();
-                _inventoryService.AppServiceName = "InProcessAppService";
-                _inventoryService.PackageFamilyName = "UWPBank.CommonAppService_m40mq4mvr89fy";
-
+                _inventoryService = new AppServiceConnection()
+                {
+                    AppServiceName = "InProcessAppService",
+                    PackageFamilyName = "UWPBank.CommonAppService_m40mq4mvr89fy"
+                };
                 var status = await _inventoryService.OpenAsync();
                 if (status != AppServiceConnectionStatus.Success)
                 {                     
@@ -145,9 +145,11 @@ namespace UWPBank
             }
 
             //call the service
-            var message = new ValueSet();
-            message.Add("Request", "CAPITALIZE");
-            message.Add("Value", input);
+            var message = new ValueSet
+            {
+                { "Request", "CAPITALIZE" },
+                { "Value", input }
+            };
             AppServiceResponse response = await _inventoryService.SendMessageAsync(message);
             string result = "";
             if (response.Status == AppServiceResponseStatus.Success)

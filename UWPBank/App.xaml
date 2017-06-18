@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="AliceBlue" />
-            <local:UWPBankViewModel x:Key="MainViewModel" />
+            <local:ViewModelLocator x:Key="Locator" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

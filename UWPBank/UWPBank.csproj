@@ -108,9 +108,6 @@
       <DependentUpon>AppServiceConsumerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UWPBankViewModel.cs" />
-    <Compile Include="RootVisual.xaml.cs">
-      <DependentUpon>RootVisual.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Desktop\LaunchDesktopProcessPage.xaml.cs">
       <DependentUpon>LaunchDesktopProcessPage.xaml</DependentUpon>
     </Compile>
@@ -121,6 +118,7 @@
       <DependentUpon>MapControlPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -150,10 +148,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppServiceConsumerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RootVisual.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
