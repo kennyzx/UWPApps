@@ -135,7 +135,7 @@ namespace UWPBank
                 _inventoryService = new AppServiceConnection()
                 {
                     AppServiceName = "InProcessAppService",
-                    PackageFamilyName = "UWPBank.CommonAppService_m40mq4mvr89fy"
+                    PackageFamilyName = "UWPBank.CommonAppService_h461r800hztwe"
                 };
                 var status = await _inventoryService.OpenAsync();
                 if (status != AppServiceConnectionStatus.Success)
