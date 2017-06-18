@@ -7,6 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="AliceBlue" />
+            <local:UWPBankViewModel x:Key="MainViewModel" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

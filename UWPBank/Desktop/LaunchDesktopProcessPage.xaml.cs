@@ -28,19 +28,7 @@ namespace UWPBank.Desktop
         {
             this.InitializeComponent();
         }
-        
-        private async void BtnLaunchDesktopProcess_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                await Full​Trust​Process​Launcher.LaunchFullTrustProcessForAppAsync("App");
-            }
-            catch (System.UnauthorizedAccessException)
-            {
-                //if the runFullTrust capability is not declared in manifest
-                await new MessageDialog("Acess Denied: runFullTrust capability is not declared in manifest").ShowAsync();
-            }
-        }        
+         
 
         private void GoHomeAppBarButton_Click(object sender, RoutedEventArgs e)
         {

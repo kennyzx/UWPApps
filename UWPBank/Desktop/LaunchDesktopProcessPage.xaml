@@ -17,7 +17,7 @@
                 <LineBreak />
                 The launch with Full​Trust​Process​Launcher.LaunchFullTrustProcessForAppAsync
             </TextBlock>
-            <Button Content="Launch" Click="BtnLaunchDesktopProcess_Click" />
+            <Button Content="Launch" Command="{Binding LaunchDesktopProcessCommand}" />
         </StackPanel>
     </Grid>
     <Page.BottomAppBar>
