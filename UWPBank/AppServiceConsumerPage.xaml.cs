@@ -32,7 +32,7 @@ namespace UWPBank
             if (args.VirtualKey == Windows.System.VirtualKey.Enter)
             {
                 //Q: How to call an async RelayCommand?
-                (this.DataContext as UWPBankViewModel)?.ConsumeAppServiceCommand.Execute(null);
+                (this.DataContext as ViewModel.UWPBankViewModel)?.ConsumeAppServiceCommand.Execute(null);
             }
         }
     }

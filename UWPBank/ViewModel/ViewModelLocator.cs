@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
-namespace UWPBank
+namespace UWPBank.ViewModel
 {
     public class ViewModelLocator
     {
