@@ -44,46 +44,10 @@ namespace UWPBank
         {
             if (args.VirtualKey == Windows.System.VirtualKey.Enter)
             {
-                await ConnectAppService();
+                //Q: How to call an async RelayCommand?
+                (this.DataContext as UWPBankViewModel)?.ConsumeAppServiceCommand.Execute(null);
             }
         }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            await ConnectAppService();
-        }
-
-        private async System.Threading.Tasks.Task ConnectAppService()
-        {
-            if (inventoryService == null)
-            {
-                inventoryService = new AppServiceConnection();
-                inventoryService.AppServiceName = "InProcessAppService";
-                inventoryService.PackageFamilyName = "UWPBank.CommonAppService_m40mq4mvr89fy";
-
-                var status = await inventoryService.OpenAsync();
-                if (status != AppServiceConnectionStatus.Success)
-                {
-                    tb.Text = "Failed to connect.";
-                    return;
-                }
-            }
-
-            //call the service
-            var message = new ValueSet();
-            message.Add("Request", "CAPITALIZE");
-            message.Add("Value", tb.Text);
-            AppServiceResponse response = await inventoryService.SendMessageAsync(message);
-            string result = "";
-            if (response.Status == AppServiceResponseStatus.Success)
-            {
-                result += response.Message["Response"] as string;
-            }
-
-            tb.Text = result;
-        }
-
-        private AppServiceConnection inventoryService;
 
         private void GoHomeAppBarButton_Click(object sender, RoutedEventArgs e)
         {

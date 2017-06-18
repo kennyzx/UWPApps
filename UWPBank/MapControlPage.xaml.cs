@@ -49,10 +49,12 @@ namespace UWPBank
                 var location = await locator.GetGeopositionAsync();
                 branchesMap.Center = location.Coordinate.Point;
 
-                var mapIcon = new MapIcon();
-                mapIcon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/mapIcon.png"));
-                mapIcon.Location = location.Coordinate.Point;
-                mapIcon.Title = "You are here";
+                var mapIcon = new MapIcon()
+                {
+                    Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/mapIcon.png")),
+                    Location = location.Coordinate.Point,
+                    Title = "You are here"
+                };
                 branchesMap.MapElements.Add(mapIcon);
             }            
         }
