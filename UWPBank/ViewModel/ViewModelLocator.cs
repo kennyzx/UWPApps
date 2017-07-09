@@ -16,6 +16,7 @@ namespace UWPBank.ViewModel
             _navigationService.Configure("AdvertisementPage", typeof(AdvertisementPage));
             _navigationService.Configure("MapControlPage", typeof(MapControlPage));
             _navigationService.Configure("LaunchDesktopProcessPage", typeof(Desktop.LaunchDesktopProcessPage));
+            _navigationService.Configure("PictureLibraryPage", typeof(PictureLibraryPage));
 
             //Register your services used here
             SimpleIoc.Default.Register<INavigationService>(() => _navigationService);

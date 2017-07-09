@@ -19,6 +19,7 @@
             <Button Content="Show me some advertisements" Command="{Binding NavigationCommand}" CommandParameter="AdvertisementPage" />
             <Button Content="Consume appservice provided by another UWP app" Command="{Binding NavigationCommand}" CommandParameter="AppServiceConsumerPage" />
             <Button Content="Show a Map" Command="{Binding NavigationCommand}" CommandParameter="MapControlPage" />
+            <Button Content="Show Picture Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
         </StackPanel>
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->

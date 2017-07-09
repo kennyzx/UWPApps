@@ -32,6 +32,7 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <uap:Capability Name="picturesLibrary" />
     <!--rescap:Capability Name="runFullTrust" /-->
     <DeviceCapability Name="location" />
   </Capabilities>

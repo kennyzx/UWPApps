@@ -108,7 +108,11 @@
     <Compile Include="AppServiceConsumerPage.xaml.cs">
       <DependentUpon>AppServiceConsumerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PictureLibraryPage.xaml.cs">
+      <DependentUpon>PictureLibraryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AppServiceConsumer.cs" />
+    <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\UWPBankViewModel.cs" />
     <Compile Include="Desktop\LaunchDesktopProcessPage.xaml.cs">
       <DependentUpon>LaunchDesktopProcessPage.xaml</DependentUpon>
@@ -162,6 +166,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MapControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PictureLibraryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

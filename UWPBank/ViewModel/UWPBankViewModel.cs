@@ -127,5 +127,18 @@ namespace UWPBank.ViewModel
                 });
             }                    
         }
+
+        private LibraryViewModel _LibraryViewModelInstance;
+        public LibraryViewModel LibraryViewModelInstance
+        {
+            get
+            {
+                if (_LibraryViewModelInstance == null)
+                {
+                    _LibraryViewModelInstance = new LibraryViewModel();
+                }
+                return _LibraryViewModelInstance;
+            }
+        }
     }
 }
