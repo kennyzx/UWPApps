@@ -12,7 +12,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
             <TextBlock Text="Input some text:" Margin="0, 2" />
-            <TextBox Width="600" HorizontalAlignment="Left" Margin="0,2" Text="{Binding AppServiceText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <TextBox Width="600" HorizontalAlignment="Left" Margin="0,2" Text="{Binding AppServiceResult, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <!--This code block does not work-->
                 <!--<Interactivity:Interaction.Behaviors>                    
                     <Core:EventTriggerBehavior EventName="KeyDown">

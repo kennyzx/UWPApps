@@ -21,6 +21,9 @@
             <Button Content="Show a Map" Command="{Binding NavigationCommand}" CommandParameter="MapControlPage" />
             <Button Content="Show Picture Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
         </StackPanel>
+        <local:AppModeSelector 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top" Margin="10" />
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->
     <Page.BottomAppBar>

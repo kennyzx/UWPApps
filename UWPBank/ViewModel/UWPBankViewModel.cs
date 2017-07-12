@@ -18,6 +18,7 @@ namespace UWPBank.ViewModel
         public UWPBankViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+            _selectedAppMode = AppMode.Feature;
         }        
 
         public RelayCommand<String> NavigationCommand
@@ -106,14 +107,14 @@ namespace UWPBank.ViewModel
             }
         }
 
-        private string _appServiceText;
-        public string AppServiceText
+        private string _appServiceResult;
+        public string AppServiceResult
         {
-            get { return _appServiceText; }
+            get { return _appServiceResult; }
             set
             {
-                _appServiceText = value;
-                RaisePropertyChanged("AppServiceText");
+                _appServiceResult = value;
+                RaisePropertyChanged("AppServiceResult");
             }
         }
 
@@ -123,7 +124,7 @@ namespace UWPBank.ViewModel
             {
                 return new RelayCommand(async () =>
                 {
-                    AppServiceText = await AppServiceConsumer.ConnectAppService(AppServiceText);
+                    AppServiceResult = await AppServiceConsumer.ConnectAppService(AppServiceResult);
                 });
             }                    
         }
@@ -138,6 +139,17 @@ namespace UWPBank.ViewModel
                     _LibraryViewModelInstance = new LibraryViewModel();
                 }
                 return _LibraryViewModelInstance;
+            }
+        }
+
+        private AppMode _selectedAppMode;
+        public AppMode SelectedAppMode
+        {
+            get { return _selectedAppMode; }
+            set
+            {
+                _selectedAppMode = value;
+                RaisePropertyChanged("SelectedAppMode");
             }
         }
     }

@@ -105,8 +105,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppMode.cs" />
     <Compile Include="AppServiceConsumerPage.xaml.cs">
       <DependentUpon>AppServiceConsumerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeSelector.xaml.cs">
+      <DependentUpon>ModeSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="PictureLibraryPage.xaml.cs">
       <DependentUpon>PictureLibraryPage.xaml</DependentUpon>
@@ -166,6 +170,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MapControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModeSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
