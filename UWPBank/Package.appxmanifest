@@ -35,5 +35,6 @@
     <uap:Capability Name="picturesLibrary" />
     <!--rescap:Capability Name="runFullTrust" /-->
     <DeviceCapability Name="location" />
+    <DeviceCapability Name="microphone" />
   </Capabilities>
 </Package>

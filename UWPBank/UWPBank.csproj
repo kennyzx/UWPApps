@@ -115,6 +115,9 @@
     <Compile Include="PictureLibraryPage.xaml.cs">
       <DependentUpon>PictureLibraryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SpeechSynthesisRecognitionPage.xaml.cs">
+      <DependentUpon>SpeechSynthesisRecognitionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AppServiceConsumer.cs" />
     <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\UWPBankViewModel.cs" />
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PictureLibraryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpeechSynthesisRecognitionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

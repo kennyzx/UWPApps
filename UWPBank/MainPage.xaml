@@ -19,11 +19,15 @@
             <Button Content="Show me some advertisements" Command="{Binding NavigationCommand}" CommandParameter="AdvertisementPage" />
             <Button Content="Consume appservice provided by another UWP app" Command="{Binding NavigationCommand}" CommandParameter="AppServiceConsumerPage" />
             <Button Content="Show a Map" Command="{Binding NavigationCommand}" CommandParameter="MapControlPage" />
-            <Button Content="Show Picture Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
-        </StackPanel>
+            <Button Content="Show Pictures in Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
+            <Button Content="Speech Synthesis and Recognition" Command="{Binding NavigationCommand}" CommandParameter="SpeechSynthesisRecognitionPage" />
+        </StackPanel>        
         <local:AppModeSelector 
             HorizontalAlignment="Right"
             VerticalAlignment="Top" Margin="10" />
+        <Button Content="My Todo List" ToolTipService.ToolTip="Launch Sticky Notes" 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top" Margin="0, 50, 10, 0"/>
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->
     <Page.BottomAppBar>

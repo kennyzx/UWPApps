@@ -16,11 +16,11 @@
                     VerticalAlignment="Top"
                     Orientation="Horizontal">            
             <RadioButton Margin="5, 0" GroupName="RadioButtonGroup" 
-                         Content="Show Feature" 
+                         Content="Show Features" 
                          IsChecked="{Binding Path=SelectedAppMode,
                             Converter={StaticResource AppModeBoolConverter},ConverterParameter=Feature, Mode=TwoWay}" />
             <RadioButton Margin="5, 0" GroupName="RadioButtonGroup" 
-                         Content="Show Story" 
+                         Content="Show Stories" 
                          IsChecked="{Binding Path=SelectedAppMode,
                             Converter={StaticResource AppModeBoolConverter},ConverterParameter=Story, Mode=TwoWay}" />
         </StackPanel>
