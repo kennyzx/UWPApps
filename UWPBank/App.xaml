@@ -3,11 +3,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWPBank"
-    xmlns:vm="using:UWPBank.ViewModel"
-    RequestedTheme="Light">
+    xmlns:vm="using:UWPBank.ViewModel">
     <Application.Resources>
         <ResourceDictionary>
-            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="AliceBlue" />
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="AliceBlue" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FF203030" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>            
             <vm:ViewModelLocator x:Key="Locator" />
         </ResourceDictionary>
     </Application.Resources>
