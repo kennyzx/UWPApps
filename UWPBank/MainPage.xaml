@@ -21,6 +21,7 @@
             <Button Content="Show a Map" Command="{Binding NavigationCommand}" CommandParameter="MapControlPage" />
             <Button Content="Show Pictures in Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
             <Button Content="Speech Synthesis and Recognition" Command="{Binding NavigationCommand}" CommandParameter="SpeechSynthesisRecognitionPage" />
+            <Button x:Uid="LocalizationButton" />
         </StackPanel>        
         <local:AppModeSelector 
             HorizontalAlignment="Right"

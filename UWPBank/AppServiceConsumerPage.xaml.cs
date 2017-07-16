@@ -27,7 +27,7 @@ namespace UWPBank
             Windows.UI.Core.CoreWindow.GetForCurrentThread().KeyDown -= AppServiceConsumerPage_KeyDown;
         }
 
-        private async void AppServiceConsumerPage_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        private void AppServiceConsumerPage_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
         {
             if (args.VirtualKey == Windows.System.VirtualKey.Enter)
             {
