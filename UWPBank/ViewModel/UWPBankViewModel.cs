@@ -142,6 +142,19 @@ namespace UWPBank.ViewModel
             }
         }
 
+        private AppThemeViewModel _AppThemeViewModelInstance;
+        public AppThemeViewModel AppThemeViewModelInstance
+        {
+            get
+            {
+                if (_AppThemeViewModelInstance == null)
+                {
+                    _AppThemeViewModelInstance = new AppThemeViewModel();
+                }
+                return _AppThemeViewModelInstance;
+            }
+        }
+
         private AppMode _selectedAppMode;
         public AppMode SelectedAppMode
         {

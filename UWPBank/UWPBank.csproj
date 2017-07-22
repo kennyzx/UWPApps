@@ -105,12 +105,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppModeBoolConverter.cs" />
+    <Compile Include="Model\AppModeBoolConverter.cs" />
     <Compile Include="Model\AppMode.cs" />
     <Compile Include="AppServiceConsumerPage.xaml.cs">
       <DependentUpon>AppServiceConsumerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MapStyleBoolConverter.cs" />
+    <Compile Include="Model\MapStyleBoolConverter.cs" />
+    <Compile Include="Model\ElementThemeBoolConverter.cs" />
     <Compile Include="Model\EnumBoolConverter.cs" />
     <Compile Include="ModeSelector.xaml.cs">
       <DependentUpon>ModeSelector.xaml</DependentUpon>
@@ -121,7 +122,11 @@
     <Compile Include="SpeechSynthesisRecognitionPage.xaml.cs">
       <DependentUpon>SpeechSynthesisRecognitionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThemeSelector.xaml.cs">
+      <DependentUpon>ThemeSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AppServiceConsumer.cs" />
+    <Compile Include="ViewModel\AppThemeViewModel.cs" />
     <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\UWPBankViewModel.cs" />
     <Compile Include="Desktop\LaunchDesktopProcessPage.xaml.cs">
@@ -196,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SpeechSynthesisRecognitionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThemeSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,9 @@
     xmlns:local="using:UWPBank"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">    
+    mc:Ignorable="d" 
+    RequestedTheme="{Binding AppThemeViewModelInstance.AppTheme, Mode=OneWay}"
+    DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">    
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
@@ -22,13 +24,15 @@
             <Button Content="Show Pictures in Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
             <Button Content="Speech Synthesis and Recognition" Command="{Binding NavigationCommand}" CommandParameter="SpeechSynthesisRecognitionPage" />
             <Button x:Uid="LocalizationButton" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right"
+                    VerticalAlignment="Top" Margin="10">
+            <local:AppModeSelector HorizontalAlignment="Right"/>
+            <local:ThemeSelector HorizontalAlignment="Right"/>
+            <Button Content="My Todo List" HorizontalAlignment="Right"
+                ToolTipService.ToolTip="Launch Sticky Notes" 
+                Margin="0, 10, 10, 0"/>
         </StackPanel>        
-        <local:AppModeSelector 
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top" Margin="10" />
-        <Button Content="My Todo List" ToolTipService.ToolTip="Launch Sticky Notes" 
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top" Margin="0, 50, 10, 0"/>
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->
     <Page.BottomAppBar>

@@ -2,9 +2,8 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Controls.Maps;
-using UWPBank.Model;
 
-namespace UWPBank
+namespace UWPBank.Model
 {
     public class MapStyleBoolConverter : EnumBoolConverter<MapStyle>
     {
