@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 
@@ -18,7 +19,6 @@ namespace UWPBank.ViewModel
         public UWPBankViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _selectedAppMode = AppMode.Feature;
         }        
 
         public RelayCommand<String> NavigationCommand
@@ -155,13 +155,22 @@ namespace UWPBank.ViewModel
             }
         }
 
-        private AppMode _selectedAppMode;
+        
         public AppMode SelectedAppMode
         {
-            get { return _selectedAppMode; }
+            get
+            {
+                var val = ApplicationData.Current.LocalSettings.Values["AppMode"];
+                if (val == null)
+                {
+                    ApplicationData.Current.LocalSettings.Values["AppMode"] = (int)AppMode.Feature;
+                    return AppMode.Feature;
+                }
+                else return (AppMode)val;
+            }
             set
             {
-                _selectedAppMode = value;
+                ApplicationData.Current.LocalSettings.Values["AppMode"] = (int)value;
                 RaisePropertyChanged("SelectedAppMode");
             }
         }
