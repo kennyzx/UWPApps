@@ -105,11 +105,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppMode.cs" />
+    <Compile Include="AppModeBoolConverter.cs" />
+    <Compile Include="Model\AppMode.cs" />
     <Compile Include="AppServiceConsumerPage.xaml.cs">
       <DependentUpon>AppServiceConsumerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapStyleBoolConverter.cs" />
+    <Compile Include="Model\EnumBoolConverter.cs" />
     <Compile Include="ModeSelector.xaml.cs">
       <DependentUpon>ModeSelector.xaml</DependentUpon>
     </Compile>

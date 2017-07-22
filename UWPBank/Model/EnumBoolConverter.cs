@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace UWPBank
+namespace UWPBank.Model
 {
-    public enum AppMode 
-    {
-        Feature,
-        Story
-    }
-
-    public class AppModeBoolConverter: IValueConverter
+    public class EnumBoolConverter<T> : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -34,7 +24,7 @@ namespace UWPBank
             if (parameter == null)
                 return DependencyProperty.UnsetValue;
 
-            return Enum.Parse(typeof(AppMode), param);
+            return Enum.Parse(typeof(T), param);
         }
     }
 }
