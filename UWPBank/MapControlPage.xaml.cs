@@ -10,7 +10,8 @@ using Windows.Storage.Streams;
 namespace UWPBank
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// MapControl: Request a maps authentication key
+    /// https://docs.microsoft.com/en-us/windows/uwp/maps-and-location/authentication-key
     /// </summary>
     public sealed partial class MapControlPage : Page
     {

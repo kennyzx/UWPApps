@@ -7,7 +7,10 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="UWPBank.MapControlPage"
     mc:Ignorable="d" DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">
-
+    <Page.Resources>
+        <local:MapStyleBoolConverter x:Key="MapStyleBoolConverter" />
+    </Page.Resources>
+        
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Minimal">
             <AppBarButton Icon="Home" Label="Home" Command="{Binding NavigationToHomeCommand}" />
@@ -15,14 +18,44 @@
     </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Maps:MapControl x:Name="branchesMap" 
+        <Maps:MapControl x:Name="branchesMap"
                          MapServiceToken="RzruHZ9hG6EKqJcSBlc4~KfuUMGR-A3n-lu2gum65DQ~Asp6xMp_bFmDJbBa3hDlGbJ6QU-T_aE5M3KzM40-1UoRP-OKKEjfitwdIUSIbEuF"
                          Margin="30"
                          HorizontalAlignment="Stretch" 
                          VerticalAlignment="Stretch"
                          BusinessLandmarksEnabled="True"
                          BusinessLandmarksVisible="True"
-                         ColorScheme="Dark"
+                         ColorScheme="Dark"                         
                          ZoomLevel="16" />
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="None" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=None, Mode=TwoWay}" />
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="Road" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=Road, Mode=TwoWay}" />
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="Aerial" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=Aerial, Mode=TwoWay}" />
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="AerialWithRoads" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=AerialWithRoads, Mode=TwoWay}" />
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="Terrain" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=Terrain, Mode=TwoWay}" />
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="Aerial3D" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=Aerial3D, Mode=TwoWay}" />
+            <RadioButton Margin="0, 2" GroupName="RadioButtonGroup" 
+                         Content="Aerial3DWithRoads" 
+                         IsChecked="{Binding Path=Style, ElementName=branchesMap,
+                            Converter={StaticResource MapStyleBoolConverter},ConverterParameter=Aerial3DWithRoads, Mode=TwoWay}" />
+        </StackPanel>
     </Grid>
 </Page>
