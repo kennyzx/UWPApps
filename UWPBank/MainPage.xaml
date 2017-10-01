@@ -24,14 +24,18 @@
             <Button Content="Show Pictures in Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
             <Button Content="Speech Synthesis and Recognition" Command="{Binding NavigationCommand}" CommandParameter="SpeechSynthesisRecognitionPage" />
             <Button x:Uid="LocalizationButton" />
+            <Button Content="Use the Camera" Command="{Binding NavigationCommand}" CommandParameter="MediaPage" />
         </StackPanel>
+        
+        <!--Move this to a seperate settingspane later-->
         <StackPanel HorizontalAlignment="Right"
                     VerticalAlignment="Top" Margin="10">
             <local:AppModeSelector HorizontalAlignment="Right"/>
             <local:ThemeSelector HorizontalAlignment="Right"/>
+            
             <Button Content="My Todo List" HorizontalAlignment="Right"
                 ToolTipService.ToolTip="Launch Sticky Notes" 
-                Margin="0, 10, 10, 0"/>
+                Margin="0, 10, 10, 0" Click="Button_Click"/>
         </StackPanel>        
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->

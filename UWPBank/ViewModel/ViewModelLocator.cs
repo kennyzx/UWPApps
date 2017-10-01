@@ -17,6 +17,7 @@ namespace UWPBank.ViewModel
             _navigationService.Configure("MapControlPage", typeof(MapControlPage));
             _navigationService.Configure("LaunchDesktopProcessPage", typeof(Desktop.LaunchDesktopProcessPage));
             _navigationService.Configure("PictureLibraryPage", typeof(PictureLibraryPage));
+            _navigationService.Configure("MediaPage", typeof(MediaPage));
             _navigationService.Configure("SpeechSynthesisRecognitionPage", typeof(SpeechSynthesisRecognitionPage));
 
             //Register your services used here

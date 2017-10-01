@@ -13,5 +13,16 @@ namespace UWPBank
         {
             this.InitializeComponent();
         }
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Windows.Graphics.Display.BrightnessOverride bo = Windows.Graphics.Display.BrightnessOverride.GetDefaultForSystem();
+            System.Diagnostics.Debug.WriteLine("BrightnessLevel:" + bo.BrightnessLevel);
+            if (bo.IsSupported)
+            {
+                bo.SetBrightnessScenario(Windows.Graphics.Display.DisplayBrightnessScenario.IdleBrightness,
+                    Windows.Graphics.Display.DisplayBrightnessOverrideOptions.None);
+            }
+        }
     }
 }
