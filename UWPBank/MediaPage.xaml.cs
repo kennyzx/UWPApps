@@ -43,14 +43,16 @@ namespace UWPBank
             Window.Current.Activated += Current_Activated;
         }
 
+        protected override async void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            await mediaCapture.StopPreviewAsync();
+            mediaCapture = null;
+            Window.Current.Activated -= Current_Activated;
+        }
+
         private async void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
         {
             await ReInitCamera();
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            Window.Current.Activated -= Current_Activated;
         }
     }
 }
