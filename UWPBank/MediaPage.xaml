@@ -12,6 +12,16 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <CaptureElement x:Name="previewElement" />        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <CaptureElement x:Name="previewElement" />
+        <Image x:Name="previewImage" Grid.Column="1"
+               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button HorizontalAlignment="Center" Grid.ColumnSpan="2"
+                Click="btnTakePicture_Click">
+            <SymbolIcon Symbol="Camera" Width="60" Height="60" />
+        </Button>        
     </Grid>
 </Page>
