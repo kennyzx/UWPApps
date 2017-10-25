@@ -105,6 +105,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExtendedExecutionPage.xaml.cs">
+      <DependentUpon>ExtendedExecutionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaPage.xaml.cs">
       <DependentUpon>MediaPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Desktop\LaunchDesktopProcessPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExtendedExecutionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

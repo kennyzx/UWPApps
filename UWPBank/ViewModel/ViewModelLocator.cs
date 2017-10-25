@@ -19,7 +19,8 @@ namespace UWPBank.ViewModel
             _navigationService.Configure("PictureLibraryPage", typeof(PictureLibraryPage));
             _navigationService.Configure("MediaPage", typeof(MediaPage));
             _navigationService.Configure("SpeechSynthesisRecognitionPage", typeof(SpeechSynthesisRecognitionPage));
-
+            _navigationService.Configure("ExtendedExecutionPage", typeof(ExtendedExecutionPage));
+            
             //Register your services used here
             SimpleIoc.Default.Register<INavigationService>(() => _navigationService);
             SimpleIoc.Default.Register<UWPBankViewModel>();
