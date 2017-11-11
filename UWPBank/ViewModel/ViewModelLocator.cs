@@ -20,7 +20,7 @@ namespace UWPBank.ViewModel
             _navigationService.Configure("MediaPage", typeof(MediaPage));
             _navigationService.Configure("SpeechSynthesisRecognitionPage", typeof(SpeechSynthesisRecognitionPage));
             _navigationService.Configure("ExtendedExecutionPage", typeof(ExtendedExecutionPage));
-            
+            _navigationService.Configure("VersionAdaptive", typeof(VersionAdaptive));
             //Register your services used here
             SimpleIoc.Default.Register<INavigationService>(() => _navigationService);
             SimpleIoc.Default.Register<UWPBankViewModel>();

@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="UWPBank.VersionAdaptive"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="30">
+            <StackPanel>
+                <TextBlock Text="Version Adaptive Code" FontSize="32" />
+                <TextBlock>
+                    This app targets Windows 10 Creators update, 
+                    but its minimum version is Anniversary update. 
+                    So we need to write code to detect if the availability of the new Anniversary update APIs at runtime.
+                </TextBlock>
+                <HyperlinkButton NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-code">https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-code</HyperlinkButton>
+                
+                <TextBox x:Name="chatBox" Margin="0, 30, 0, 0" />
+            </StackPanel>            
+        </Grid>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Home" Label="Home" Command="{Binding NavigationToHomeCommand}" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
