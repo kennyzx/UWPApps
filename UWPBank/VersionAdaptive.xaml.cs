@@ -27,6 +27,15 @@ namespace UWPBank
         {
             this.InitializeComponent();
             DetectSupportedInputScope();
+            DetectNotificationListenerIsSupport();
+        }
+
+        private void DetectNotificationListenerIsSupport()
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
+            {
+                // Listener supported!
+            }
         }
 
         private void DetectSupportedInputScope()

@@ -131,6 +131,9 @@
     <Compile Include="ThemeSelector.xaml.cs">
       <DependentUpon>ThemeSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UWPChartPage.xaml.cs">
+      <DependentUpon>UWPChartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VersionAdaptive.xaml.cs">
       <DependentUpon>VersionAdaptive.xaml</DependentUpon>
     </Compile>
@@ -227,6 +230,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UWPChartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VersionAdaptive.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +266,15 @@
     <PackageReference Include="MvvmLight">
       <Version>5.3.0</Version>
     </PackageReference>
+    <PackageReference Include="WinRTXamlToolkit.Controls.DataVisualization.UWP">
+      <Version>2.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UWPBank.UI\UWPBank.UI.csproj">
+      <Project>{fc61d3f2-e2f7-4407-8272-7bf9b442902f}</Project>
+      <Name>UWPBank.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
