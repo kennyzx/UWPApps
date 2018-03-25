@@ -23,15 +23,24 @@ namespace UWPBank
     /// </summary>
     public sealed partial class PictureLibraryPage : Page
     {
+        UWPBankViewModel _viewModel;
+        
         public PictureLibraryPage()
         {
             this.InitializeComponent();
-            this.Loaded += PictureLibraryPage_Loaded;
+            _viewModel = this.DataContext as UWPBankViewModel;
         }
 
-        private void PictureLibraryPage_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            (this.DataContext as UWPBankViewModel)?.LibraryViewModelInstance.UpdateImages();
+            base.OnNavigatedTo(e);
+            _viewModel?.LibraryViewModelInstance.UpdateImages();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            _viewModel?.LibraryViewModelInstance.CancelUpdatingImages();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.FileProperties;
@@ -17,8 +18,14 @@ namespace UWPBank.ViewModel
     //https://msdn.microsoft.com/en-us/magazine/mt620012.aspx?f=255&MSPPError=-2147217396
     public class LibraryViewModel
     {
-        private ObservableCollection<ImageFileInfo> _allImages 
-            = new ObservableCollection<ImageFileInfo>();
+        private ObservableCollection<ImageFileInfo> _allImages;
+        private CancellationTokenSource _cts; //to cancel lengthy process of loading picture
+
+        public LibraryViewModel()
+        {
+            _allImages = new ObservableCollection<ImageFileInfo>();            
+        }
+        
         public ObservableCollection<ImageFileInfo> AllImages
         {
             get
@@ -27,42 +34,36 @@ namespace UWPBank.ViewModel
             }
         }
 
-        public async void UpdateImages()
+        public async Task UpdateImages()
         {
-            //await UpdateImagesInternal();
-            await UpdateImagesUsingIndexer(); //actually this takes longer
-        }
-
-        //Naive code
-        private async Task UpdateImagesInternal()
-        {
-            Stopwatch watch = Stopwatch.StartNew();
-
-            var fileList = await KnownFolders.PicturesLibrary.GetFilesAsync();
-            foreach (var file in fileList)
+            try
             {
-                var prop = await file.GetBasicPropertiesAsync();                
-                var thumbnail = await file.GetThumbnailAsync(ThumbnailMode.PicturesView);
-                
-                _allImages.Add(new ImageFileInfo()
-                {
-                    FileName = file.Name,
-                    FileSize = prop.Size,
-                    DateModified = prop.DateModified,
-                    Thumbnail = thumbnail
-                });
-            }                
-
-            Debug.WriteLine($"Elapsed ms: {watch.ElapsedMilliseconds}");
+                _cts = new CancellationTokenSource();
+                await UpdateImagesUsingIndexer(_cts.Token); 
+            }
+            catch (TaskCanceledException )
+            {
+                Debug.WriteLine("Task cancelled in UpdateImages().");
+            }
         }
 
-        //Optimized code
-        private async Task UpdateImagesUsingIndexer()
+        public void CancelUpdatingImages()
+        {
+            if (_cts != null && _cts.Token.CanBeCanceled)
+                _cts.Cancel();
+        }        
+
+        private async Task UpdateImagesUsingIndexer(CancellationToken cancellationToken)
         {
             Stopwatch watch = Stopwatch.StartNew();
+
+            _allImages.Clear(); //clear the result of previous operation
+
             QueryOptions options = new QueryOptions(CommonFileQuery.OrderByDate,
-                new String[] { ".jpg", ".jpeg", ".png" });
-            options.IndexerOption = IndexerOption.UseIndexerWhenAvailable;
+                new String[] { ".jpg", ".jpeg", ".png" })
+            {
+                IndexerOption = IndexerOption.UseIndexerWhenAvailable
+            };
             options.SetPropertyPrefetch(PropertyPrefetchOptions.None,
                 new String[] { "System.Size", "System.DateModified" });
 
@@ -79,8 +80,7 @@ namespace UWPBank.ViewModel
 
             // Note that I'm paging in the files as described
             while (files.Count != 0)
-            {
-                var fileTask = queryResult.GetFilesAsync(index, stepSize).AsTask();
+            {                
                 foreach (StorageFile file in files)
                 {
                     IDictionary<string, object> props =
@@ -97,10 +97,15 @@ namespace UWPBank.ViewModel
                         Thumbnail = thumbnail
                     });
                 }
+
+                //If a cancellation is requested, abort the operation.
+                cancellationToken.ThrowIfCancellationRequested();
+
+                var fileTask = queryResult.GetFilesAsync(index, stepSize).AsTask();
                 files = await fileTask;
                 index += 10;
             }
-            Debug.WriteLine($"Elapsed ms: {watch.ElapsedMilliseconds}");            
+            Debug.WriteLine($"{_allImages.Count} pictures are listed. Elapsed ms: {watch.ElapsedMilliseconds}");            
         }
     }
 
