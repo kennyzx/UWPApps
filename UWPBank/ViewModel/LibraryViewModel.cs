@@ -76,7 +76,7 @@ namespace UWPBank.ViewModel
 
             uint index = 0, stepSize = 10;
             IReadOnlyList<StorageFile> files = await queryResult.GetFilesAsync(index, stepSize);
-            index += 10;
+
             // Note that I'm paging in the files as described
             while (files.Count != 0)
             {
