@@ -18,9 +18,9 @@
         </CommandBar>
     </Page.BottomAppBar>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">        
-        <ListView x:Name="lvAllImages" DataContext="{Binding Path=LibraryViewModelInstance}" 
-                ItemsSource="{Binding AllImages}" 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView x:Name="lvAllPictures" DataContext="{Binding Path=PictureLibraryViewModelInstance}" 
+                ItemsSource="{Binding AllPictures}" 
                 ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

@@ -129,16 +129,16 @@ namespace UWPBank.ViewModel
             }                    
         }
 
-        private LibraryViewModel _LibraryViewModelInstance;
-        public LibraryViewModel LibraryViewModelInstance
+        private PictureLibraryViewModel _PictureLibraryViewModelInstance;
+        public PictureLibraryViewModel PictureLibraryViewModelInstance
         {
             get
             {
-                if (_LibraryViewModelInstance == null)
+                if (_PictureLibraryViewModelInstance == null)
                 {
-                    _LibraryViewModelInstance = new LibraryViewModel();
+                    _PictureLibraryViewModelInstance = new PictureLibraryViewModel();
                 }
-                return _LibraryViewModelInstance;
+                return _PictureLibraryViewModelInstance;
             }
         }
 

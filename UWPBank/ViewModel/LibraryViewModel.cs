@@ -16,48 +16,48 @@ namespace UWPBank.ViewModel
 {
     //Windows 10 - Accelerate File Operations with the Search Indexer
     //https://msdn.microsoft.com/en-us/magazine/mt620012.aspx?f=255&MSPPError=-2147217396
-    public class LibraryViewModel
+    public class PictureLibraryViewModel
     {
-        private ObservableCollection<ImageFileInfo> _allImages;
+        private ObservableCollection<PictureFileInfo> _allPictures;
         private CancellationTokenSource _cts; //to cancel lengthy process of loading picture
 
-        public LibraryViewModel()
+        public PictureLibraryViewModel()
         {
-            _allImages = new ObservableCollection<ImageFileInfo>();            
+            _allPictures = new ObservableCollection<PictureFileInfo>();
         }
-        
-        public ObservableCollection<ImageFileInfo> AllImages
+
+        public ObservableCollection<PictureFileInfo> AllPictures
         {
             get
             {
-                return _allImages;
+                return _allPictures;
             }
         }
 
-        public async Task UpdateImages()
+        public async Task UpdatePictures()
         {
             try
             {
                 _cts = new CancellationTokenSource();
-                await UpdateImagesUsingIndexer(_cts.Token); 
+                await UpdatePicturesUsingIndexer(_cts.Token);
             }
-            catch (TaskCanceledException )
+            catch (TaskCanceledException)
             {
-                Debug.WriteLine("Task cancelled in UpdateImages().");
+                Debug.WriteLine("Task cancelled in UpdatePictures().");
             }
         }
 
-        public void CancelUpdatingImages()
+        public void CancelUpdatingPictures()
         {
             if (_cts != null && _cts.Token.CanBeCanceled)
                 _cts.Cancel();
-        }        
+        }
 
-        private async Task UpdateImagesUsingIndexer(CancellationToken cancellationToken)
+        private async Task UpdatePicturesUsingIndexer(CancellationToken cancellationToken)
         {
             Stopwatch watch = Stopwatch.StartNew();
 
-            _allImages.Clear(); //clear the result of previous operation
+            _allPictures.Clear(); //clear the result of previous operation
 
             QueryOptions options = new QueryOptions(CommonFileQuery.OrderByDate,
                 new String[] { ".jpg", ".jpeg", ".png" })
@@ -73,14 +73,14 @@ namespace UWPBank.ViewModel
             const ThumbnailOptions thumbnailOptions = ThumbnailOptions.UseCurrentScale;
             options.SetThumbnailPrefetch(thumbnailMode, requestedSize, thumbnailOptions);
 
-            StorageFileQueryResult queryResult = KnownFolders.PicturesLibrary.CreateFileQueryWithOptions(options);            
+            StorageFileQueryResult queryResult = KnownFolders.PicturesLibrary.CreateFileQueryWithOptions(options);
 
             uint index = 0, stepSize = 10;
             IReadOnlyList<StorageFile> files = await queryResult.GetFilesAsync(index, stepSize);
 
             // Note that I'm paging in the files as described
             while (files.Count != 0)
-            {                
+            {
                 foreach (StorageFile file in files)
                 {
                     IDictionary<string, object> props =
@@ -89,7 +89,7 @@ namespace UWPBank.ViewModel
 
                     var thumbnail = await file.GetThumbnailAsync(thumbnailMode, requestedSize, thumbnailOptions);
 
-                    _allImages.Add(new ImageFileInfo()
+                    _allPictures.Add(new PictureFileInfo()
                     {
                         FileName = file.Name,
                         FileSize = (ulong)props["System.Size"],
@@ -105,11 +105,11 @@ namespace UWPBank.ViewModel
                 files = await fileTask;
                 index += 10;
             }
-            Debug.WriteLine($"{_allImages.Count} pictures are listed. Elapsed ms: {watch.ElapsedMilliseconds}");            
+            Debug.WriteLine($"{_allPictures.Count} pictures are listed. Elapsed ms: {watch.ElapsedMilliseconds}");
         }
     }
 
-    public class ImageFileInfo
+    public class PictureFileInfo
     {
         public string FileName { get; set; }
         public ulong FileSize { get; set; }
@@ -126,7 +126,7 @@ namespace UWPBank.ViewModel
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.SetSource(value as StorageItemThumbnail);
                 return bitmapImage;
-            }        
+            }
             return null;
         }
 
