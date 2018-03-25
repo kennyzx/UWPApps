@@ -139,7 +139,7 @@
     </Compile>
     <Compile Include="ViewModel\AppServiceConsumer.cs" />
     <Compile Include="ViewModel\AppThemeViewModel.cs" />
-    <Compile Include="ViewModel\LibraryViewModel.cs" />
+    <Compile Include="ViewModel\PictureLibraryViewModel.cs" />
     <Compile Include="ViewModel\UWPBankViewModel.cs" />
     <Compile Include="Desktop\LaunchDesktopProcessPage.xaml.cs">
       <DependentUpon>LaunchDesktopProcessPage.xaml</DependentUpon>
