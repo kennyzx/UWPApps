@@ -11,14 +11,24 @@
         <Grid Margin="30">
             <StackPanel>
                 <TextBlock Text="Version Adaptive Code" FontSize="32" />
-                <TextBlock>
-                    This app targets Windows 10 Creators update, 
-                    but its minimum version is Anniversary update. 
-                    So we need to write code to detect if the availability of the new Anniversary update APIs at runtime.
+                <TextBlock >
+                    This app targets Windows 10 Creators update, <LineBreak />
+                    but its minimum version is Anniversary update.  <LineBreak />
+                    So we need to write code to detect the availability of the new Anniversary update APIs at runtime.
                 </TextBlock>
-                <HyperlinkButton NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-code">https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-code</HyperlinkButton>
-                
-                <TextBox x:Name="chatBox" Margin="0, 30, 0, 0" />
+                <TextBlock Margin="0, 30, 0, 0" Text="See also" />
+                <HyperlinkButton Margin="20, 0" 
+                                 NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-code" 
+                                 Content="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-code" />
+
+                <TextBlock FontSize="24" Text="Example 1: Set the input scope of the text box, based on the presence of the ChatWithoutEmoji value." />
+                <TextBox x:Name="chatBox" Margin="30, 10" />
+
+                <TextBlock FontSize="24" Text="Example 2: Detect if User​Notification​Listener class is supported." />
+                <Button x:Name="btnListenUserNotification" Margin="30, 10" 
+                        Content="Listen to user notification" 
+                        Click="btnListenUserNotification_Click" />
+                <TextBlock x:Name="tbNotifications" Margin="30, 0" />
             </StackPanel>            
         </Grid>
     </Grid>

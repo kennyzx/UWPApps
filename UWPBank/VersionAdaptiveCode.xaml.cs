@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Notifications.Management;
+using Windows.UI.Notifications;
+using System.Text;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,15 +29,41 @@ namespace UWPBank
         public VersionAdaptiveCode()
         {
             this.InitializeComponent();
+
+            DetectIfNotificationListenerIsSupport();
             DetectSupportedInputScope();
-            DetectNotificationListenerIsSupport();
         }
 
-        private void DetectNotificationListenerIsSupport()
+        private void DetectIfNotificationListenerIsSupport()
         {
-            if (ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
+            if (!ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
             {
-                // Listener supported!
+                btnListenUserNotification.Content = "UserNotificationListener is not supported.";
+                btnListenUserNotification.IsEnabled = false;
+            }
+        }
+
+        private async void btnListenUserNotification_Click(object sender, RoutedEventArgs e)
+        {
+            var userNotificationListener = UserNotificationListener.Current;
+            if (await userNotificationListener.RequestAccessAsync() == UserNotificationListenerAccessStatus.Allowed)
+            {
+                StringBuilder sbNotifications = new StringBuilder();
+                foreach (var notification in await userNotificationListener.GetNotificationsAsync(NotificationKinds.Toast))
+                {
+                    sbNotifications.AppendLine();
+                    sbNotifications.Append(notification.AppInfo.DisplayInfo.DisplayName);
+                    sbNotifications.AppendLine();
+                    //TODO: display notication descriptions
+                    foreach (var binding in notification.Notification.Visual.Bindings)
+                    {
+                        foreach (var text in binding.GetTextElements())
+                        {
+                            sbNotifications.AppendLine(text.Text);
+                        }
+                    }
+                }
+                tbNotifications.Text = sbNotifications.ToString();
             }
         }
 
