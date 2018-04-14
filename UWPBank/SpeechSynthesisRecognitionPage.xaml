@@ -14,6 +14,7 @@
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
+            <TextBlock Text="Speech Synthesis and Recognition" Style="{StaticResource PageTitleStyle}" />
             <TextBlock Text="Select Voice" />
             <ComboBox x:Name="cbAvailableVoices" Width="200" />
             <TextBlock Text="Select a text file and read its content" />

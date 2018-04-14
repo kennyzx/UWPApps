@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Margin="30">
             <StackPanel>
-                <TextBlock Text="Version Adaptive Code" FontSize="32" />
+                <TextBlock Text="Version Adaptive Code" Style="{StaticResource PageTitleStyle}" />
                 <TextBlock TextWrapping="WrapWholeWords">
                     This app targets Windows 10 Creators update, <LineBreak />
                     but its minimum version is Anniversary update.  <LineBreak />

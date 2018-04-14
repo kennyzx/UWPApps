@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWPBank"
     xmlns:vm="using:UWPBank.ViewModel">
-    <Application.Resources>
+    <Application.Resources>        
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
@@ -15,6 +15,9 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>            
             <vm:ViewModelLocator x:Key="Locator" />
+            <Style TargetType="TextBlock" x:Key="PageTitleStyle">
+                <Setter Property="FontSize" Value="32" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
