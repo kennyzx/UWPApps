@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,6 +31,7 @@ namespace UWPBank
         public SpeechSynthesisRecognitionPage()
         {
             this.InitializeComponent();
+            
             this.Loaded += SpeechSynthesisRecognitionPage_Loaded;
         }
 
@@ -38,6 +41,11 @@ namespace UWPBank
             cbAvailableVoices.DisplayMemberPath = "DisplayName";
             cbAvailableVoices.ItemsSource = SpeechSynthesizer.AllVoices;
             cbAvailableVoices.SelectedIndex = SpeechSynthesizer.AllVoices.Count > 0 ? 0 : -1;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            StopReading();
         }
 
         private async void btnSelectTextToRead_Click(object sender, RoutedEventArgs e)
@@ -53,21 +61,38 @@ namespace UWPBank
             if (file != null)
             {
                 string fileContent = await FileIO.ReadTextAsync(file);
-                MediaElement mediaElement = new MediaElement();
-                using (var synth = new SpeechSynthesizer())
-                {
-                    synth.Voice = cbAvailableVoices.SelectedItem as VoiceInformation;
-                    SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(fileContent);
-                    mediaElement.MediaEnded += (s, args) =>
-                    {
-                        stream.Dispose();
-                    };
-                    mediaElement.SetSource(stream, stream.ContentType);
-                    mediaElement.Play();
-                }
+                if (fileContent.Length > 10 * 1024)
+                    fileContent = fileContent.Substring(10 * 1024); //set upper limit of text length
+
+                tbTextFileContent.Text = fileContent;
+                
+                await ConvertTextToSpeechAndPlay(fileContent);
             }
         }
 
+        private async Task ConvertTextToSpeechAndPlay(string text)
+        {
+            StopReading();            
+
+            using (var synth = new SpeechSynthesizer())
+            {
+                synth.Voice = cbAvailableVoices.SelectedItem as VoiceInformation;
+                SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(text);
+                ttsMediaElement = new MediaElement();
+                ttsMediaElement.MediaEnded += (s, args) =>
+                {
+                    stream.Dispose(); //TODO: This is not actually hit, potential memory leak?
+                };
+                ttsMediaElement.SetSource(stream, stream.ContentType);
+                ttsMediaElement.Play();
+            }
+        }
+
+        private void StopReading()
+        {
+            if (ttsMediaElement != null)
+                ttsMediaElement.Stop(); //stop the reading that has not finished, if any
+        }
 
         private async void btnSpeechRecognize_Click(object sender, RoutedEventArgs e)
         {
@@ -79,17 +104,26 @@ namespace UWPBank
                 await recognizer.CompileConstraintsAsync();
                 recognizer.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(5);
                 recognizer.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(20);
-
-                SpeechRecognitionResult result = await recognizer.RecognizeAsync();
-                if (result.Status == SpeechRecognitionResultStatus.Success)
+                try
                 {
-                    tbPhoneNumber.Text = result.Text;
+                    SpeechRecognitionResult result = await recognizer.RecognizeAsync();
+                    if (result.Status == SpeechRecognitionResultStatus.Success)
+                    {
+                        tbPhoneNumber.Text = result.Text;
+                    }
+                    else
+                    {
+                        tbPhoneNumber.Text = result.Status.ToString();
+                    }
                 }
-                else
+                catch (UnauthorizedAccessException ex)
                 {
-                    tbPhoneNumber.Text = result.Status.ToString();
+                    await new MessageDialog(ex.Message).ShowAsync();
+                    //TODO: Redirect user to Settings to grant permission to the app
                 }
             }
         }
+
+        MediaElement ttsMediaElement;
     }
 }
