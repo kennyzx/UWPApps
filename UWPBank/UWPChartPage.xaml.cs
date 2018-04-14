@@ -44,8 +44,8 @@ namespace UWPBank
             chart1.Series.Add(new LineSeries
             {
                 Title = "Squiggly Line",
-                IndependentValuePath = "xValue",
-                DependentValuePath = "yValue",
+                IndependentValuePath = "XValue",
+                DependentValuePath = "YValue",
                 ItemsSource = ChartData,
                 IndependentAxis = new LinearAxis
                 {
