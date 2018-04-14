@@ -10,12 +10,21 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30">
             <TextBlock Text="Extended Execution" Style="{StaticResource PageTitleStyle}" />
-            <TextBlock Text="Normally when the app is switched to the background, it will enter a suspended state where all threads are freezed. " />
-            <HyperlinkButton Content="Extended Execution" FontSize="24" NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/launch-resume/run-minimized-with-extended-execution" />
-            <TextBlock Text=" is a mechanism to postpone when the app is suspeneded." />
-            <Button Click="doWorkButton_Click" Content="Do some work" />
+            <RichTextBlock>
+                <Paragraph>
+                    <Run Text="Normally when the app is switched to the background, it will enter a suspended state where all threads are freezed." />
+                    <InlineUIContainer>
+                        <HyperlinkButton Content="Extended Execution" 
+                                         NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/launch-resume/run-minimized-with-extended-execution" />
+                    </InlineUIContainer>
+                    <Run Text=" is a mechanism to postpone when the app is suspeneded." />
+                </Paragraph>
+            </RichTextBlock>
+
+            <!--<TextBlock Text="Click the button the start a lengthy operation" FontSize="18" Margin="30, 10"/>-->
+            <Button Click="doWorkButton_Click" Content="Do some work" Margin="30, 20" />
             <TextBlock x:Name="strExtendedExecutionResult" />
-            <TextBlock Text="Extended execution session status:" FontSize="18" />
+            <TextBlock Text="Extended execution session status:" FontSize="18" Margin="30, 10"/>
             <TextBlock x:Name="ExtendedExecutionSessionStatus" TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
