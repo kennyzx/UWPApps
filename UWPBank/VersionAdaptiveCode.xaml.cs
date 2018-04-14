@@ -38,13 +38,13 @@ namespace UWPBank
         {
             if (!ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
             {
-                btnListenUserNotification.Content = "UserNotificationListener is not supported.";
-                btnListenUserNotification.IsEnabled = false;
+                btnListUserNotifications.Content = "UserNotificationListener is not supported.";
+                btnListUserNotifications.IsEnabled = false;
             }
         }
 
 #pragma warning disable IDE1006 // Naming Styles
-        private async void btnListenUserNotification_Click(object sender, RoutedEventArgs e)
+        private async void btnListUserNotifications_Click(object sender, RoutedEventArgs e)
 #pragma warning restore IDE1006 // Naming Styles
         {
             var userNotificationListener = UserNotificationListener.Current;

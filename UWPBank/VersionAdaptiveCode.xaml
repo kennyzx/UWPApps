@@ -25,9 +25,9 @@
                 <TextBox x:Name="chatBox" Margin="30, 10" />
 
                 <TextBlock FontSize="24" Text="Example 2: Detect if User​Notification​Listener class is supported." />
-                <Button x:Name="btnListenUserNotification" Margin="30, 10" 
-                        Content="Listen to user notification" 
-                        Click="btnListenUserNotification_Click" />
+                <Button x:Name="btnListUserNotifications" Margin="30, 10" 
+                        Content="List user notifications" 
+                        Click="btnListUserNotifications_Click" />
                 <TextBlock x:Name="tbNotifications" Margin="30, 0" />
             </StackPanel>            
         </Grid>
