@@ -20,7 +20,7 @@ namespace UWPBank.ViewModel
             _navigationService.Configure("MediaPage", typeof(MediaPage));
             _navigationService.Configure("SpeechSynthesisRecognitionPage", typeof(SpeechSynthesisRecognitionPage));
             _navigationService.Configure("ExtendedExecutionPage", typeof(ExtendedExecutionPage));
-            _navigationService.Configure("VersionAdaptivePage", typeof(VersionAdaptive));
+            _navigationService.Configure("VersionAdaptiveCodePage", typeof(VersionAdaptiveCode));
             _navigationService.Configure("UWPChartPage", typeof(UWPChartPage));
 
             //Register your services used here

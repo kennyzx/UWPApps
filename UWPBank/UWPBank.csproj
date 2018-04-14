@@ -134,8 +134,8 @@
     <Compile Include="UWPChartPage.xaml.cs">
       <DependentUpon>UWPChartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VersionAdaptive.xaml.cs">
-      <DependentUpon>VersionAdaptive.xaml</DependentUpon>
+    <Compile Include="VersionAdaptiveCode.xaml.cs">
+      <DependentUpon>VersionAdaptiveCode.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AppServiceConsumer.cs" />
     <Compile Include="ViewModel\AppThemeViewModel.cs" />
@@ -234,7 +234,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VersionAdaptive.xaml">
+    <Page Include="VersionAdaptiveCode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

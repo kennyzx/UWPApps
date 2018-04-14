@@ -27,7 +27,7 @@
             <Button x:Uid="LocalizationButton" />
             <Button Content="Use the Camera" Command="{Binding NavigationCommand}" CommandParameter="MediaPage" />
             <Button Content="Extended Execution" Command="{Binding NavigationCommand}" CommandParameter="ExtendedExecutionPage" />
-            <Button Content="Version Adaptive Code" Command="{Binding NavigationCommand}" CommandParameter="VersionAdaptivePage" />
+            <Button Content="Version Adaptive Code" Command="{Binding NavigationCommand}" CommandParameter="VersionAdaptiveCodePage" />
             <Button Content="UWP Chart" Command="{Binding NavigationCommand}" CommandParameter="UWPChartPage" />
         </StackPanel>
         
