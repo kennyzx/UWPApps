@@ -36,8 +36,8 @@ namespace UWPBank
             {
                 ChartData.Add(new XYValues
                 {
-                    xValue = index,
-                    yValue = yValueArray[index]
+                    XValue = index,
+                    YValue = yValueArray[index]
                 });
             }
 
@@ -60,7 +60,7 @@ namespace UWPBank
 
     public class XYValues
     {
-        public int xValue { get; set; }
-        public byte yValue { get; set; }
+        public int XValue { get; set; }
+        public byte YValue { get; set; }
     }
 }
