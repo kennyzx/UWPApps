@@ -10,6 +10,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="30" x:Name="spAdvertisements">
+            <TextBlock Style="{StaticResource PageTitleStyle}" 
+                       Text="Microsoft Advertising" />
             <TextBlock FontSize="16" Text="https://docs.microsoft.com/en-us/windows/uwp/monetize/test-mode-values" />
 
             <TextBlock FontSize="16" Text="Microsoft.Advertising.WinRT.UI.AdControl"/>

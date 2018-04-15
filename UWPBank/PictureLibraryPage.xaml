@@ -17,33 +17,37 @@
             <AppBarButton Icon="Home" Label="Home" Command="{Binding NavigationToHomeCommand}" />
         </CommandBar>
     </Page.BottomAppBar>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="lvAllPictures" DataContext="{Binding Path=PictureLibraryViewModelInstance}" 
+        <StackPanel Margin="30">
+            <TextBlock Style="{StaticResource PageTitleStyle}"
+                       Text="Pictures Library" />
+            <ListView x:Name="lvAllPictures" DataContext="{Binding Path=PictureLibraryViewModelInstance}" 
                 ItemsSource="{Binding AllPictures}" 
                 ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="300" Height="100" Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
-                            <ColumnDefinition Width="*" /> 
-                        </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <TextBlock Text="{Binding FileName}" />
-                            <TextBlock Text="{Binding FileSize, Converter={StaticResource FileSizeFormatter}}" />
-                            <TextBlock Text="{Binding DateModified, Converter={StaticResource DateTimeOffsetFormatter}}" />
-                        </StackPanel>
-                        <Image Grid.Column="1" Source="{Binding Thumbnail, 
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="300" Height="100" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="{Binding FileName}" />
+                                <TextBlock Text="{Binding FileSize, Converter={StaticResource FileSizeFormatter}}" />
+                                <TextBlock Text="{Binding DateModified, Converter={StaticResource DateTimeOffsetFormatter}}" />
+                            </StackPanel>
+                            <Image Grid.Column="1" Source="{Binding Thumbnail, 
                             Converter={StaticResource ThumbnailImageConverter}}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>                
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

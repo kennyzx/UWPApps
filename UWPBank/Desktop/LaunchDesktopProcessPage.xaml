@@ -8,8 +8,8 @@
     mc:Ignorable="d" DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="82,86,-22,-26">
-            <TextBlock FontSize="20" Text="Launch Desktop Process (LaunchFullTrustProcessForAppAsync)"/>
+        <StackPanel Margin="30">
+            <TextBlock Style="{StaticResource PageTitleStyle}" Text="Launch Desktop Process (LaunchFullTrustProcessForAppAsync)"/>
             <TextBlock Margin="20">
                 1. Add a Desktop executable to the project and set its Build Action as Content
                 <LineBreak />

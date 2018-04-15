@@ -22,6 +22,9 @@
         <Button HorizontalAlignment="Center" Grid.ColumnSpan="2"
                 Click="btnTakePicture_Click">
             <SymbolIcon Symbol="Camera" Width="60" Height="60" />
-        </Button>        
+        </Button>
+        <TextBlock Style="{StaticResource PageTitleStyle}" Margin="30" 
+                   Grid.ColumnSpan="2"
+                   Text="Capture Photo (Video, Audio)" />
     </Grid>
 </Page>
