@@ -14,7 +14,7 @@ namespace UWPBank
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void appMemoryUsageButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ulong usageLimit = Windows.System.MemoryManager.AppMemoryUsageLimit;
             ulong currentUsage = Windows.System.MemoryManager.AppMemoryUsage;
