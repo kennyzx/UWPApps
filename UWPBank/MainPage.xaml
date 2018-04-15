@@ -11,13 +11,14 @@
     DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">    
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="30">
-            <StackPanel.Resources>
+        <VariableSizedWrapGrid MaximumRowsOrColumns="8"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <VariableSizedWrapGrid.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Margin" Value="0, 2" />
+                    <Setter Property="Margin" Value="10" />
                 </Style>
-            </StackPanel.Resources>
-            <Button Content="Launch Desktop Process" Command="{Binding NavigationCommand}" CommandParameter="LaunchDesktopProcessPage" />
+            </VariableSizedWrapGrid.Resources>
+            <Button VariableSizedWrapGrid.ColumnSpan="8" Content="Launch Desktop Process" Command="{Binding NavigationCommand}" CommandParameter="LaunchDesktopProcessPage" />
             <Button Content="Trigger an app crash for HockeyApp" Command="{Binding TriggerHockeyAppCrashCommand}" />
             <Button Content="Show me some advertisements" Command="{Binding NavigationCommand}" CommandParameter="AdvertisementPage" />
             <Button Content="Consume appservice provided by another UWP app" Command="{Binding NavigationCommand}" CommandParameter="AppServiceConsumerPage" />
@@ -29,11 +30,11 @@
             <Button Content="Extended Execution" Command="{Binding NavigationCommand}" CommandParameter="ExtendedExecutionPage" />
             <Button Content="Version Adaptive Code" Command="{Binding NavigationCommand}" CommandParameter="VersionAdaptiveCodePage" />
             <Button Content="UWP Chart" Command="{Binding NavigationCommand}" CommandParameter="UWPChartPage" />
-        </StackPanel>
+        </VariableSizedWrapGrid>
         
         <!--Move this to a seperate settingspane later-->
         <StackPanel HorizontalAlignment="Right"
-                    VerticalAlignment="Top" Margin="10">
+                    VerticalAlignment="Top" Margin="30">
             <local:AppModeSelector HorizontalAlignment="Right"/>
             <local:ThemeSelector HorizontalAlignment="Right"/>
             <CalendarDatePicker DateFormat="{}{day.integer(2)}-{month.abbreviated}-{year.full}" HorizontalAlignment="Right" />
