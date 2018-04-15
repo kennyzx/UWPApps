@@ -43,9 +43,7 @@ namespace UWPBank
             }
         }
 
-#pragma warning disable IDE1006 // Naming Styles
         private async void btnListUserNotifications_Click(object sender, RoutedEventArgs e)
-#pragma warning restore IDE1006 // Naming Styles
         {
             var userNotificationListener = UserNotificationListener.Current;
             if (await userNotificationListener.RequestAccessAsync() == UserNotificationListenerAccessStatus.Allowed)
