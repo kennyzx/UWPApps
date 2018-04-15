@@ -101,9 +101,9 @@ namespace UWPBank.ViewModel
                 //If a cancellation is requested, abort the operation.
                 cancellationToken.ThrowIfCancellationRequested();
 
-                var fileTask = queryResult.GetFilesAsync(index, stepSize).AsTask();
-                files = await fileTask;
                 index += 10;
+                var fileTask = queryResult.GetFilesAsync(index, stepSize).AsTask();
+                files = await fileTask;                
             }
             Debug.WriteLine($"{_allPictures.Count} pictures are listed. Elapsed ms: {watch.ElapsedMilliseconds}");
         }
