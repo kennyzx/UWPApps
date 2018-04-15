@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="ViewModel\AppServiceConsumer.cs" />
     <Compile Include="ViewModel\AppThemeViewModel.cs" />
+    <Compile Include="ViewModel\GoogleOAuth.cs" />
     <Compile Include="ViewModel\PictureLibraryViewModel.cs" />
     <Compile Include="ViewModel\UWPBankViewModel.cs" />
     <Compile Include="Desktop\LaunchDesktopProcessPage.xaml.cs">

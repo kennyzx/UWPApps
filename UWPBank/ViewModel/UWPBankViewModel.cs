@@ -19,7 +19,18 @@ namespace UWPBank.ViewModel
         public UWPBankViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-        }        
+        }
+
+        public RelayCommand SignInGoogleAccountCommand
+        {
+            get
+            {
+                return new RelayCommand(async () =>
+                {
+                    await new GoogleOAuth().SignIn();
+                });
+            }
+        }
 
         public RelayCommand<String> NavigationCommand
         {
@@ -154,7 +165,6 @@ namespace UWPBank.ViewModel
                 return _AppThemeViewModelInstance;
             }
         }
-
         
         public AppMode SelectedAppMode
         {
