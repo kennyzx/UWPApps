@@ -8,46 +8,75 @@
     mc:Ignorable="d" 
     xmlns:ubui="using:UWPBank.UI"
     RequestedTheme="{Binding AppThemeViewModelInstance.AppTheme, Mode=OneWay}"
-    DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">    
+    DataContext="{Binding UWPBankViewModelInstance, Source={StaticResource Locator}}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="30">
-            <StackPanel.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Margin" Value="0, 2" />
-                </Style>
-            </StackPanel.Resources>
-            <Button Content="Launch Desktop Process" Command="{Binding NavigationCommand}" CommandParameter="LaunchDesktopProcessPage" />
-            <Button Content="Trigger an app crash for HockeyApp" Command="{Binding TriggerHockeyAppCrashCommand}" />
-            <Button Content="Show me some advertisements" Command="{Binding NavigationCommand}" CommandParameter="AdvertisementPage" />
-            <Button Content="Consume appservice provided by another UWP app" Command="{Binding NavigationCommand}" CommandParameter="AppServiceConsumerPage" />
-            <Button Content="Show a Map" Command="{Binding NavigationCommand}" CommandParameter="MapControlPage" />
-            <Button Content="Show Pictures in Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
-            <Button Content="Speech Synthesis and Recognition" Command="{Binding NavigationCommand}" CommandParameter="SpeechSynthesisRecognitionPage" />
-            <Button x:Uid="LocalizationButton" />
-            <Button Content="Use the Camera" Command="{Binding NavigationCommand}" CommandParameter="MediaPage" />
-            <Button Content="Extended Execution" Command="{Binding NavigationCommand}" CommandParameter="ExtendedExecutionPage" />
-            <Button Content="Version Adaptive Code" Command="{Binding NavigationCommand}" CommandParameter="VersionAdaptiveCodePage" />
-            <Button Content="UWP Chart" Command="{Binding NavigationCommand}" CommandParameter="UWPChartPage" />
-        </StackPanel>
-        
-        <!--Move this to a seperate settingspane later-->
-        <StackPanel HorizontalAlignment="Right"
+        <SplitView DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                        Width="50" Height="50" Background="Transparent" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
+                            Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Button 1" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE10F;"
+                            Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Button 2" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;"
+                            Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Button 3" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <StackPanel Margin="30">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="0, 2" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Content="Launch Desktop Process" Command="{Binding NavigationCommand}" CommandParameter="LaunchDesktopProcessPage" />
+                        <Button Content="Trigger an app crash for HockeyApp" Command="{Binding TriggerHockeyAppCrashCommand}" />
+                        <Button Content="Show me some advertisements" Command="{Binding NavigationCommand}" CommandParameter="AdvertisementPage" />
+                        <Button Content="Consume appservice provided by another UWP app" Command="{Binding NavigationCommand}" CommandParameter="AppServiceConsumerPage" />
+                        <Button Content="Show a Map" Command="{Binding NavigationCommand}" CommandParameter="MapControlPage" />
+                        <Button Content="Show Pictures in Library" Command="{Binding NavigationCommand}" CommandParameter="PictureLibraryPage" />
+                        <Button Content="Speech Synthesis and Recognition" Command="{Binding NavigationCommand}" CommandParameter="SpeechSynthesisRecognitionPage" />
+                        <Button x:Uid="LocalizationButton" />
+                        <Button Content="Use the Camera" Command="{Binding NavigationCommand}" CommandParameter="MediaPage" />
+                        <Button Content="Extended Execution" Command="{Binding NavigationCommand}" CommandParameter="ExtendedExecutionPage" />
+                        <Button Content="Version Adaptive Code" Command="{Binding NavigationCommand}" CommandParameter="VersionAdaptiveCodePage" />
+                        <Button Content="UWP Chart" Command="{Binding NavigationCommand}" CommandParameter="UWPChartPage" />
+                    </StackPanel>
+
+                    <!--Move this to a seperate settingspane later-->
+                    <StackPanel HorizontalAlignment="Right"
                     VerticalAlignment="Top" Margin="30">
-            <Button Content="Sign in with Google account" Command="{Binding SignInGoogleAccountCommand}" />
-            <local:AppModeSelector HorizontalAlignment="Right"/>
-            <local:ThemeSelector HorizontalAlignment="Right"/>
-            <CalendarDatePicker DateFormat="{}{day.integer(2)}-{month.abbreviated}-{year.full}" HorizontalAlignment="Right" />
-            <TextBlock Text="Memory Management APIs" x:Name="strMemoryAPIs" TextWrapping="Wrap" />
-            <Button Content="App Memory Usage" HorizontalAlignment="Right"
+                        <Button Content="Sign in with Google account" Command="{Binding SignInGoogleAccountCommand}" />
+                        <local:AppModeSelector HorizontalAlignment="Right"/>
+                        <local:ThemeSelector HorizontalAlignment="Right"/>
+                        <CalendarDatePicker DateFormat="{}{day.integer(2)}-{month.abbreviated}-{year.full}" HorizontalAlignment="Right" />
+                        <TextBlock Text="Memory Management APIs" x:Name="strMemoryAPIs" TextWrapping="Wrap" />
+                        <Button Content="App Memory Usage" HorizontalAlignment="Right"
                 ToolTipService.ToolTip="Show memory usage of the app" 
                 Margin="0, 10, 10, 0" Click="appMemoryUsageButton_Click"/>
-        </StackPanel>
-        <!--<Grid x:Name="blurShield">
-            <Grid.Background>
-                <ubui:BackdropBlurBrush BlurAmount="5" />
-            </Grid.Background>
-        </Grid>-->
+                    </StackPanel>
+                    <!--<Grid x:Name="blurShield">
+                        <Grid.Background>
+                            <ubui:BackdropBlurBrush BlurAmount="5" />
+                        </Grid.Background>
+                    </Grid>-->
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+
     </Grid>
     <!--Think about how to reuse the command bar to navigate back to home page-->
     <Page.BottomAppBar>
