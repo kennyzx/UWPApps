@@ -1,4 +1,4 @@
-# UWPBank
+# UWPApps
 
 I write this app to explore the various features of the Universal Windows Platform. 
 
